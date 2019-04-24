@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 const IngredientsContext = React.createContext({
+	imageLink: '',
 	ingredients: [],
 	error: null,
+	setImageLink: () => {},
 	setIngredients: () => {},
 	clearIngredients: () => {},
 	setError: () => {},
@@ -12,7 +14,11 @@ const IngredientsContext = React.createContext({
 export default IngredientsContext;
 
 export class IngredientsProvider extends Component {
-	state = { ingredients: [], error: null };
+	state = { imageLink: '', ingredients: [], error: null };
+
+	setImageLink = imageLink => {
+		this.setState({ imageLink });
+	};
 
 	setIngredients = ingredients => {
 		this.setState({ ingredients });
@@ -32,8 +38,10 @@ export class IngredientsProvider extends Component {
 
 	render() {
 		const value = {
+			imageLink: this.state.imageLink,
 			ingredients: this.state.ingredients,
 			error: this.state.error,
+			setImageLink: this.setImageLink,
 			setIngredients: this.setIngredients,
 			clearIngredients: this.clearIngredients,
 			setError: this.setError,

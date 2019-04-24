@@ -4,17 +4,17 @@ import RecipeApiService from '../../services/recipe-api-service';
 
 export default class UploadForm extends Component {
 	static contextType = IngredientsContext;
-	constructor(props) {
-		super(props);
-		this.state = {
-			imageLink: ''
-		};
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		imageLink: ''
+	// 	};
+	// }
 
 	handleImageSumbit = e => {
 		e.preventDefault();
 		this.context.clearError();
-		const { imageLink } = this.state;
+		const { imageLink } = this.context;
 		RecipeApiService.getIngredients(imageLink)
 			.then(res => res.json())
 			.then(this.context.setIngredients)
@@ -24,9 +24,9 @@ export default class UploadForm extends Component {
 			});
 	};
 
-	updateImageLink = imageLink => {
-		this.setState({ imageLink });
-	};
+	// updateImageLink = imageLink => {
+	// 	this.setState({ imageLink });
+	// };
 
 	render() {
 		return (
@@ -36,7 +36,7 @@ export default class UploadForm extends Component {
 					type="text"
 					name="image_link"
 					id="image_link"
-					onChange={e => this.updateImageLink(e.target.value)}
+					onChange={e => this.context.setImageLink(e.target.value)}
 				/>
 				<button type="submit">Search for recipes</button>
 			</form>
