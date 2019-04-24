@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ImageInput from '../../components/ImageInput/ImageInput';
+import UploadForm from '../../components/UploadForm/UploadForm';
 import { IngredientsProvider } from '../../contexts/IngredientsContext';
 
 export default class HomePage extends Component {
@@ -8,7 +8,7 @@ export default class HomePage extends Component {
 			<div>
 				<h2>HomePage</h2>
 				<IngredientsProvider>
-					<ImageInput />
+					<UploadForm />
 				</IngredientsProvider>
 			</div>
 		);
