@@ -4,6 +4,7 @@ const IngredientsContext = React.createContext({
 	ingredients: [],
 	error: null,
 	setIngredients: () => {},
+	clearIngredients: () => {},
 	setError: () => {},
 	clearError: () => {}
 });
@@ -15,6 +16,10 @@ export class IngredientsProvider extends Component {
 
 	setIngredients = ingredients => {
 		this.setState({ ingredients });
+	};
+
+	clearIngredients = () => {
+		this.setState({ ingredients: [] });
 	};
 
 	setError = error => {
@@ -30,6 +35,7 @@ export class IngredientsProvider extends Component {
 			ingredients: this.state.ingredients,
 			error: this.state.error,
 			setIngredients: this.setIngredients,
+			clearIngredients: this.clearIngredients,
 			setError: this.setError,
 			clearError: this.clearError
 		};

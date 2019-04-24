@@ -13,12 +13,14 @@ export default class UploadForm extends Component {
 
 	handleImageSumbit = e => {
 		e.preventDefault();
+		this.context.clearError();
 		const { imageLink } = this.state;
 		RecipeApiService.getIngredients(imageLink)
 			.then(res => res.json())
 			.then(this.context.setIngredients)
-			.catch(error => {
-				console.log(error);
+			.catch(err => {
+				this.context.setError(err);
+				this.context.clearIngredients();
 			});
 	};
 
