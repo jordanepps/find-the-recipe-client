@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import IngredientsContext, {
-	IngredientsProvider
-} from '../../contexts/IngredientsContext';
+import IngredientsContext from '../../contexts/IngredientsContext';
 import RecipeApiService from '../../services/recipe-api-service';
 
 export default class ImageInput extends Component {
