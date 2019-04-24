@@ -8,7 +8,7 @@ export default class HomePage extends Component {
 			<div>
 				<h2>HomePage</h2>
 				<IngredientsProvider>
-					<UploadForm />
+					<UploadForm {...this.props} />
 				</IngredientsProvider>
 			</div>
 		);
