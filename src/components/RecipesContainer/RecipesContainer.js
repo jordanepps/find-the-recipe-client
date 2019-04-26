@@ -29,7 +29,6 @@ export default class RecipesContainer extends Component {
 			<div>
 				<h2>RecipesContainer</h2>
 				{this.context.recipes.map(this.renderRecipeCard)}
-				{/* <RecipeCard /> */}
 			</div>
 		);
 	}
