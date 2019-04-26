@@ -22,9 +22,7 @@ export default class ImageIngredientsBox extends Component {
 				{this.renderImage(this.context.imageLink)}
 				<div>
 					<h3>Possible Ingredients:</h3>
-					{this.context.ingredients
-						.filter(ingredient => ingredient.value >= 83)
-						.map(this.renderIngredient)}
+					{this.context.ingredients.map(this.renderIngredient)}
 				</div>
 			</div>
 		);
