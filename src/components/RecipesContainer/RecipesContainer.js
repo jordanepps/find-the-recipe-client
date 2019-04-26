@@ -20,15 +20,16 @@ export default class RecipesContainer extends Component {
 	};
 
 	renderRecipeCard = (recipe, i) => {
-		return <RecipeCard key={i} {...recipe} />;
+		const { name, image } = recipe;
+		return <RecipeCard key={i} name={name} image={image} />;
 	};
 
 	render() {
 		return (
 			<div>
 				<h2>RecipesContainer</h2>
-				{/* {this.context.recipes.map(this.rederRecipeCard)} */}
-				<RecipeCard />
+				{this.context.recipes.map(this.renderRecipeCard)}
+				{/* <RecipeCard /> */}
 			</div>
 		);
 	}
