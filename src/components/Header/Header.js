@@ -12,10 +12,12 @@ export default class Header extends Component {
 		return (
 			<ul id="menu">
 				<li>
-					<Link to="/favorites">Favorites</Link>
+					<Link to="/favorites" className="nav-link">
+						Favorites
+					</Link>
 				</li>
 				<li>
-					<Link onClick={this.handleLogoutClick} to="/">
+					<Link onClick={this.handleLogoutClick} to="/" className="nav-link">
 						Logout
 					</Link>
 				</li>
@@ -27,10 +29,14 @@ export default class Header extends Component {
 		return (
 			<ul id="menu">
 				<li>
-					<Link to="/register">Register</Link>
+					<Link to="/register" className="nav-link">
+						Register
+					</Link>
 				</li>
 				<li>
-					<Link to="/login">Login</Link>
+					<Link to="/login" className="nav-link">
+						Login
+					</Link>
 				</li>
 			</ul>
 		);
@@ -39,7 +45,7 @@ export default class Header extends Component {
 	render() {
 		return (
 			<header>
-				<Link to="/" id="logo">
+				<Link to="/" className="heading">
 					Find The Recipe
 				</Link>
 				<input type="checkbox" id="menu-btn" />

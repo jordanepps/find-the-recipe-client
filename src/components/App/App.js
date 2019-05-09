@@ -16,10 +16,10 @@ export default class App extends Component {
 				<Header />
 				<IngredientsProvider>
 					<Switch>
-						<Route exact path={'/'} component={HomePage} />
-						<PublicOnlyRoute path={'/login'} component={LoginPage} />
-						<PublicOnlyRoute path={'/register'} component={RegistrationPage} />
-						<Route path={'/recipe-list'} component={RecipeListPage} />
+						<Route exact path="/" component={HomePage} />
+						<PublicOnlyRoute path="/login" component={LoginPage} />
+						<PublicOnlyRoute path="/register" component={RegistrationPage} />
+						<Route path="/recipe-list" component={RecipeListPage} />
 					</Switch>
 				</IngredientsProvider>
 			</div>

@@ -4,11 +4,14 @@ header {
     z-index: 3;
 }
 
-#logo {
-    font-size: 20px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
+header .heading {
+    font-size: 32px;
     margin: 0;
+    color: #13022C;
+    display: block;
+    float: left;
+    padding: 10px 20px;
+    text-decoration: none;
 }
 
 header ul {
@@ -19,23 +22,17 @@ header ul {
     background-color: #fff;
 }
 
-header li a {
+.nav-link {
     display: block;
     padding: 20px 20px;
     text-decoration: none;
 }
 
-header li a:hover,
+.nav-link:hover,
 header .menu-btn:hover {
     background-color: #f4f4f4;
 }
 
-header #logo {
-    display: block;
-    float: left;
-    padding: 10px 20px;
-    text-decoration: none;
-}
 
 header #menu {
     clear: both;
@@ -45,32 +42,34 @@ header #menu {
 
 header #menu-icon {
     cursor: pointer;
-    /* display: inline-block; */
     float: right;
     padding: 22px 20px;
     position: relative;
     user-select: none;
+    margin-top: 7px;
 
 }
 
 header #menu-icon #navicon {
-    background: #333;
+    background: #13022C;
     display: block;
     height: 2px;
     position: relative;
     transition: background .2s ease-out;
     width: 18px;
+    border-radius: 3px;
 }
 
 header #menu-icon #navicon:before,
 header #menu-icon #navicon:after {
-    background: #333;
+    background: #13022C;
     content: '';
     display: block;
     height: 100%;
     position: absolute;
     transition: all .2s ease-out;
     width: 100%;
+    border-radius: 3px;
 }
 
 header #menu-icon #navicon:before {
@@ -82,7 +81,6 @@ header #menu-icon #navicon:after {
 }
 
 header #menu-btn {
-    /* display: none; */
     clip: rect(0 0 0 0);
     height: auto;
     margin: 0;
@@ -91,10 +89,6 @@ header #menu-btn {
     position: absolute;
     width: 1px;
     white-space: nowrap;
-}
-
-header #menu-btn:focus+#menu-icon {
-    /* border: 1px solid rgba(81, 203, 238, 1); */
 }
 
 header #menu-btn:checked~#menu {
@@ -118,21 +112,17 @@ header #menu-btn:checked~#menu-icon:not(.steps) #navicon:after {
     top: 0;
 }
 
-header #menu-btn:checked~#menu {
-    max-width: 100%;
-    box-shadow: 0px 6px 5px 0 rgba(0, 0, 0, .1);
-}
-
-a {
-    color: #000;
-}
-
 @media (min-width: 768px) {
+
+    header .heading {
+        font-size: 38px;
+    }
+
     header li {
         float: left;
     }
 
-    header li a {
+    .nav-link {
         padding: 20px 30px;
     }
 
