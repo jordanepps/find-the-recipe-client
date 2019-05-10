@@ -1,0 +1,108 @@
+.menu-icon {
+    cursor: pointer;
+    float: right;
+    padding: 22px 20px;
+    position: relative;
+    user-select: none;
+    margin-top: 7px;
+    border: none;
+}
+
+.menu-icon .nav-icon {
+    background: #13022C;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+    border-radius: 3px;
+}
+
+.menu-icon .nav-icon:before,
+.menu-icon .nav-icon:after {
+    background: #13022C;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.menu-icon .nav-icon:before {
+    top: 5px;
+}
+
+.menu-icon .nav-icon:after {
+    top: -5px;
+}
+
+.menu-icon:not(.steps) .menu-open:before,
+.menu-icon:not(.steps) .menu-open:after {
+    top: 0;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+header .menu-btn:hover {
+    background-color: #f4f4f4;
+}
+
+.nav-icon.menu-open {
+    background: transparent;
+}
+
+.menu-open:before {
+    transform: rotate(-45deg);
+}
+
+.menu-open:after {
+    transform: rotate(45deg);
+}
+
+
+.menu.show-nav {
+    max-height: 240px;
+}
+
+
+@media (min-width: 768px) {
+    .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+
+    .menu li {
+        float: left;
+    }
+
+    .nav-link {
+        padding: 20px 30px;
+        float: left;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+
+
+}

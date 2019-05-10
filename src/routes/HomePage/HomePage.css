@@ -1,14 +1,11 @@
 .page-section {
     display: grid;
     grid-template-columns: 100%;
-    /* grid-column-gap: 10px; */
-
-
 }
 
 .home-image {
     justify-self: center;
-    width: 100%;
+    width: 50%;
     height: auto;
 }
 

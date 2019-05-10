@@ -14,7 +14,7 @@ header .heading {
     text-decoration: none;
 }
 
-header ul {
+/* header ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -47,6 +47,7 @@ header #menu-icon {
     position: relative;
     user-select: none;
     margin-top: 7px;
+    border: none;
 
 }
 
@@ -89,6 +90,7 @@ header #menu-btn {
     position: absolute;
     width: 1px;
     white-space: nowrap;
+
 }
 
 header #menu-btn:checked~#menu {
@@ -110,7 +112,7 @@ header #menu-btn:checked~#menu-icon #navicon:after {
 header #menu-btn:checked~#menu-icon:not(.steps) #navicon:before,
 header #menu-btn:checked~#menu-icon:not(.steps) #navicon:after {
     top: 0;
-}
+} */
 
 @media (min-width: 768px) {
 
@@ -118,7 +120,7 @@ header #menu-btn:checked~#menu-icon:not(.steps) #navicon:after {
         font-size: 38px;
     }
 
-    header li {
+    /* header li {
         float: left;
     }
 
@@ -134,5 +136,5 @@ header #menu-btn:checked~#menu-icon:not(.steps) #navicon:after {
 
     header #menu-icon {
         display: none;
-    }
+    } */
 }

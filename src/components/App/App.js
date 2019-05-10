@@ -6,6 +6,7 @@ import RecipeListPage from '../../routes/RecipeListPage/RecipeListPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import './App.css';
 
@@ -22,6 +23,7 @@ export default class App extends Component {
 						<Route path="/recipe-list" component={RecipeListPage} />
 					</Switch>
 				</IngredientsProvider>
+				<Footer />
 			</div>
 		);
 	}
