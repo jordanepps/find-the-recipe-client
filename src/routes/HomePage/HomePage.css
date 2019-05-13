@@ -25,8 +25,8 @@
 @media (min-width: 768px) {
     .page-section {
         grid-template-columns: 40% 60%;
-        grid-template-rows: 60%;
         margin-top: 115px;
+        margin-bottom: 10px;
         grid-row-gap: 15px;
     }
 
