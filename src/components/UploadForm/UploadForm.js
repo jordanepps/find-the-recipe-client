@@ -31,6 +31,7 @@ export default class UploadForm extends Component {
 						type="text"
 						name="image_link"
 						id="image_link"
+						required
 						onChange={e => this.context.setImageLink(e.target.value)}
 					/>
 				</div>

@@ -11,13 +11,12 @@ export default class RegistrationPage extends Component {
 
 	state = {
 		error: null,
-		passwordMatchError: null,
-		successMessage: null
+		passwordMatchError: null
 	};
 
 	handleRegistrationSuccess = user => {
 		const { history } = this.props;
-		history.push('/login');
+		history.push('/login?success');
 	};
 
 	handleFormSubmit = e => {
@@ -41,11 +40,7 @@ export default class RegistrationPage extends Component {
 				password.value = '';
 				verify_password.value = '';
 
-				this.setState({ successMessage: 'Registration was successful!' });
-
-				setTimeout(function() {
-					this.handleRegistrationSuccess();
-				}, 5000);
+				this.handleRegistrationSuccess();
 			})
 			.catch(res => {
 				this.setState({ error: res.error });
@@ -69,12 +64,12 @@ export default class RegistrationPage extends Component {
 	};
 
 	render() {
-		const { passwordMatchError, error, successMessage } = this.state;
+		const { passwordMatchError, error } = this.state;
 		return (
 			<section className="registration-container">
 				<h2>Register</h2>
 				<h3 className="error">{error}</h3>
-				<h3 className="success">{successMessage}</h3>
+
 				<form onSubmit={this.handleFormSubmit}>
 					<div>
 						<label htmlFor="full_name">Full Name:</label>

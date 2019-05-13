@@ -1,0 +1,40 @@
+.login-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.login form div {
+    margin: 22px 0;
+}
+
+.login-container h2 {
+    text-align: center;
+    font-family: 'Rancho', cursive;
+    font-weight: normal;
+    font-size: 40px;
+}
+
+.login-container label {
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.login-container input {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #686868;
+    border-radius: 4px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .login-container {
+        margin-top: 90px;
+    }
+}
