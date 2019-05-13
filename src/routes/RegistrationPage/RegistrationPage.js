@@ -45,8 +45,6 @@ export default class RegistrationPage extends Component {
 			.catch(res => {
 				this.setState({ error: res.error });
 			});
-
-		// this.handleRegistrationSuccess();
 	};
 
 	renderPasswordErrorMessage = error => {

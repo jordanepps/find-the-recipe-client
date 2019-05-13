@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import IngredientsContext from '../../contexts/IngredientsContext';
 import RecipeApiService from '../../services/recipe-api-service';
 import RecipeCard from '../RecipeCard/RecipeCard';
+import './RecipesContainer.css';
 
 export default class RecipesContainer extends Component {
 	static contextType = IngredientsContext;
@@ -20,16 +21,18 @@ export default class RecipesContainer extends Component {
 	};
 
 	renderRecipeCard = (recipe, i) => {
-		const { name, image } = recipe;
-		return <RecipeCard key={i} name={name} image={image} />;
+		const { name, image, id } = recipe;
+		return <RecipeCard key={i} name={name} image={image} id={id} />;
 	};
 
 	render() {
 		return (
-			<div>
-				<h2>RecipesContainer</h2>
-				{this.context.recipes.map(this.renderRecipeCard)}
-			</div>
+			<Fragment>
+				<h2 className="recipe-title">Possible recipes</h2>
+				<div className="recipes-container">
+					{this.context.recipes.map(this.renderRecipeCard)}
+				</div>
+			</Fragment>
 		);
 	}
 }

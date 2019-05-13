@@ -1,0 +1,21 @@
+.recipe-container {
+    margin-top: 60px;
+}
+
+.recipe-container h2 {
+    text-align: center;
+    font-family: 'Rancho', cursive;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+@media (min-width: 768px) {
+
+    .recipe-container {
+        margin-top: 70px;
+    }
+
+    .recipe-container h2 {
+        font-size: 40px;
+    }
+}
