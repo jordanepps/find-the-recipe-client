@@ -1,0 +1,43 @@
+.ingredient-container {
+    padding: 0 8px;
+    display: grid;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ingredient-container div {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.food-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.ingredient-container h3 {
+    font-family: 'Rancho', cursive;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+.ingredients p {
+    font-size: 18px;
+}
+
+@media (min-width: 768px) {
+    .ingredient-container {
+        grid-template-columns: 50% 50%;
+        margin-top: 100px;
+    }
+
+    .ingredient-container h3 {
+
+        font-size: 45px;
+    }
+
+    .ingredients p {
+        font-size: 20px;
+    }
+}

@@ -6,8 +6,7 @@ export default class RecipeListPage extends Component {
 	render() {
 		return (
 			<div>
-				<h2>RecipeListPage</h2>
-				<ImageIngredientsBox />
+				<ImageIngredientsBox history={this.props.history} />
 				<RecipesContainer />
 			</div>
 		);

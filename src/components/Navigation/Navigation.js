@@ -137,7 +137,6 @@ export default class Navigation extends Component {
 	};
 
 	render() {
-		console.log('nav render');
 		const buttonClassList = this.state.isOpen
 			? 'nav-icon menu-open'
 			: 'nav-icon';
