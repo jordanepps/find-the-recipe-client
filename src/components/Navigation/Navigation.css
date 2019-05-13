@@ -88,6 +88,7 @@ header .menu-btn:hover {
         clear: none;
         float: right;
         max-height: none;
+        display: block;
     }
 
     .menu li {
@@ -102,7 +103,4 @@ header .menu-btn:hover {
     .menu-icon {
         display: none;
     }
-
-
-
 }

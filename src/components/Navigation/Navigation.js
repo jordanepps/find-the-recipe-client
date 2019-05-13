@@ -7,28 +7,87 @@ export default class Navigation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isOpen: false
+			isOpen: false,
+			isMobile: false
 		};
 	}
 
+	componentDidMount = () => {
+		window.addEventListener(
+			'resize',
+			this.throttle(this.handleWindowResize, 300)
+		);
+	};
+
+	componentWillUnmount = () => {
+		window.removeEventListener(
+			'resize',
+			this.throttle(this.handleWindowResize, 300)
+		);
+	};
+
+	throttle = (fn, threshhold = 250, scope) => {
+		let last, deferTimer;
+		return function() {
+			let context = scope || this;
+
+			let now = +new Date(),
+				args = arguments;
+			if (last && now < last + threshhold) {
+				clearTimeout(deferTimer);
+				deferTimer = setTimeout(function() {
+					last = now;
+					fn.apply(context, args);
+				}, threshhold);
+			} else {
+				last = now;
+				fn.apply(context, args);
+			}
+		};
+	};
+
+	handleWindowResize = () => {
+		this.setState({ isMobile: window.innerWidth < 768 });
+	};
+
 	handleLogoutClick = () => {
+		this.setState({ isOpen: !this.state.isOpen });
 		TokenService.clearAuthToken();
 	};
 
 	renderLogoutLink = classList => {
+		const { isOpen, isMobile } = this.state;
+
+		let tab;
+		if ((!isOpen && !isMobile) || isOpen) {
+			tab = 0;
+		} else {
+			tab = -1;
+		}
+
 		return (
 			<ul
 				className={classList}
 				aria-labelledby="menu-btn-label"
-				aria-expanded={this.state.isOpen}
+				aria-expanded={isOpen}
 			>
 				<li>
-					<Link to="/favorites" className="nav-link">
+					<Link
+						to="/favorites"
+						className="nav-link"
+						onClick={this.hideShowNavToggle}
+						tabIndex={tab}
+					>
 						Favorites
 					</Link>
 				</li>
 				<li>
-					<Link onClick={this.handleLogoutClick} to="/" className="nav-link">
+					<Link
+						onClick={this.handleLogoutClick}
+						to="/"
+						className="nav-link"
+						tabIndex={tab}
+					>
 						Logout
 					</Link>
 				</li>
@@ -37,19 +96,36 @@ export default class Navigation extends Component {
 	};
 
 	renderLoginLink = classList => {
+		const { isOpen, isMobile } = this.state;
+		let tab;
+		if ((!isOpen && !isMobile) || isOpen) {
+			tab = 0;
+		} else {
+			tab = -1;
+		}
 		return (
 			<ul
 				className={classList}
 				aria-labelledby="menu-btn-label"
-				aria-expanded={this.state.isOpen}
+				aria-expanded={isOpen}
 			>
 				<li>
-					<Link to="/register" className="nav-link">
+					<Link
+						to="/register"
+						className="nav-link"
+						onClick={this.hideShowNavToggle}
+						tabIndex={tab}
+					>
 						Register
 					</Link>
 				</li>
 				<li>
-					<Link to="/login" className="nav-link">
+					<Link
+						to="/login"
+						className="nav-link"
+						onClick={this.hideShowNavToggle}
+						tabIndex={tab}
+					>
 						Login
 					</Link>
 				</li>

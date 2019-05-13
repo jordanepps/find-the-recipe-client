@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IngredientsContext from '../../contexts/IngredientsContext';
 import RecipeApiService from '../../services/recipe-api-service';
+import './UploadForm.css';
 
 export default class UploadForm extends Component {
 	static contextType = IngredientsContext;
@@ -24,14 +25,18 @@ export default class UploadForm extends Component {
 	render() {
 		return (
 			<form onSubmit={this.handleImageSumbit}>
-				<label htmlFor="image_link">Paste Image Link: </label>
-				<input
-					type="text"
-					name="image_link"
-					id="image_link"
-					onChange={e => this.context.setImageLink(e.target.value)}
-				/>
-				<button type="submit">Search for recipes</button>
+				<div className="form-container">
+					<label htmlFor="image_link">Paste Image Link</label>
+					<input
+						type="text"
+						name="image_link"
+						id="image_link"
+						onChange={e => this.context.setImageLink(e.target.value)}
+					/>
+				</div>
+				<div className="submit-container">
+					<button type="submit">Search for recipes</button>
+				</div>
 			</form>
 		);
 	}
