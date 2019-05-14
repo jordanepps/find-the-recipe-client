@@ -5,6 +5,7 @@ const IngredientsContext = React.createContext({
 	ingredients: [],
 	recipes: [],
 	error: null,
+	isAuthorized: false,
 	setImageLink: () => {},
 	setIngredients: () => {},
 	setRecipes: () => {},
@@ -17,7 +18,17 @@ const IngredientsContext = React.createContext({
 export default IngredientsContext;
 
 export class IngredientsProvider extends Component {
-	state = { imageLink: '', ingredients: [], recipes: [], error: null };
+	state = {
+		imageLink: '',
+		ingredients: [],
+		recipes: [],
+		error: null,
+		isAuthorized: false
+	};
+
+	toggleAuthorized = () => {
+		this.setState({ isAuthorized: !this.state.isAuthorized });
+	};
 
 	setImageLink = imageLink => {
 		this.setState({ imageLink });
@@ -59,7 +70,9 @@ export class IngredientsProvider extends Component {
 			setRecipes: this.setRecipes,
 			clearRecipes: this.clearRecipes,
 			setError: this.setError,
-			clearError: this.clearError
+			clearError: this.clearError,
+			toggleAuthorized: this.toggleAuthorized,
+			isAuthorized: this.state.isAuthorized
 		};
 		return (
 			<IngredientsContext.Provider value={value}>

@@ -1,5 +1,7 @@
 .recipe-container {
-    margin-top: 60px;
+    max-width: 400px;
+    margin: 60px auto 0;
+    display: grid;
 }
 
 .recipe-container h2 {
@@ -9,13 +11,122 @@
     font-size: 30px;
 }
 
+.recipe-container img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.recipe-container h4 {
+    margin: 15px 0 1px;
+    font-size: 18px;
+}
+
+.recipe-container p {
+    margin: 0;
+    font-size: 17px;
+}
+
+.ingredient-line {
+    margin: 2px 0;
+}
+
+.recipe-container a {
+    text-decoration: none;
+}
+
+.favorite-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-btn button {
+    -webkit-transition: 0.3s all ease;
+    -webkit-transition: 0.3s ease all;
+    transition: 0.3s ease all;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 0px;
+    border: 2px solid #686868;
+    border-radius: 4px;
+    position: relative;
+    width: 270px;
+}
+
+.favorite-btn button:hover {
+    color: #FFF;
+    background-color: #686868;
+    cursor: pointer;
+}
+
+
 @media (min-width: 768px) {
 
     .recipe-container {
+        max-width: 800px;
         margin-top: 70px;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: repeat(8, 100px);
+        text-align: center;
     }
 
     .recipe-container h2 {
         font-size: 40px;
+        padding: 15px;
+        grid-column: 2;
+
     }
+
+    .recipe-container div {
+        padding: 15px;
+    }
+
+    .recipe-container .image-container {
+        grid-column: 1;
+        grid-row: 1;
+
+    }
+
+    .recipe-container .ingredients-container {
+        grid-column: 1;
+        grid-row: 5;
+        text-align: left;
+    }
+
+    .favorite-btn {
+        grid-column: 2;
+        grid-row: 3;
+        margin-top: -80px;
+    }
+
+    .Serving {
+        grid-column: 2;
+        grid-row: 5;
+        margin-top: -85px;
+    }
+
+    .Health {
+        grid-column: 2;
+        grid-row: 6;
+        margin-top: -60px;
+    }
+
+    .Cautions {
+        grid-column: 2;
+        grid-row: 7;
+        margin-top: -90px;
+    }
+
+    .Source {
+        grid-column: 2;
+        grid-row: 4;
+        margin-top: -50px;
+    }
+
 }

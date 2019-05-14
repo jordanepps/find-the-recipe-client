@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import './LoginPage.css';
+import IngredientsContext from '../../contexts/IngredientsContext';
 
 export default class LoginPage extends Component {
+	static contextType = IngredientsContext;
 	state = { error: null };
 
 	handleLoginSuccess = () => {
 		const { location, history } = this.props;
 		const destination = (location.state || {}).from || '/';
+		this.context.toggleAuthorized();
 		history.push(destination);
 	};
 

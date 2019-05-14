@@ -2,8 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import './Navigation.css';
+import IngredientsContext from '../../contexts/IngredientsContext';
 
 export default class Navigation extends Component {
+	static contextType = IngredientsContext;
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -52,6 +55,7 @@ export default class Navigation extends Component {
 
 	handleLogoutClick = () => {
 		this.setState({ isOpen: !this.state.isOpen });
+		this.context.toggleAuthorized();
 		TokenService.clearAuthToken();
 	};
 

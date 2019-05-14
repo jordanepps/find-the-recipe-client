@@ -22,6 +22,15 @@ const RecipeApiService = {
 			if (!res.ok) throw Error(res);
 			return res;
 		});
+	},
+	getSelectedRecipe(endpoint) {
+		const encodedSearch = encodeURIComponent(endpoint);
+		return fetch(`${config.API_ENDPOINT}/recipes?r=${encodedSearch}`, {
+			headers: { 'content-type': 'application/json' }
+		}).then(res => {
+			if (!res.ok) throw Error(res);
+			return res;
+		});
 	}
 };
 
