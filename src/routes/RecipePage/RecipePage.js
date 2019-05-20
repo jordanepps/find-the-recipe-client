@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IngredientsContext from '../../contexts/IngredientsContext';
 import RecipeApiService from '../../services/recipe-api-service';
+import FavoritesApiService from '../../services/favorites-api-service';
 import './RecipePage.css';
 
 export default class RecipePage extends Component {
@@ -8,13 +9,28 @@ export default class RecipePage extends Component {
 
 	state = {
 		recipeEndpoint: 'http://www.edamam.com/ontologies/edamam.owl#recipe_',
-		recipe: {}
+		recipe: {},
+		isUserFavorite: false
 	};
 
 	componentDidMount = () => {
 		const { recipeId } = this.props.match.params;
 		const { recipeEndpoint } = this.state;
 		const recipeLink = `${recipeEndpoint}${recipeId}`;
+		this.getCurrentRecipe(recipeLink);
+		this.checkCurrentFavorite(recipeLink);
+	};
+
+	checkCurrentFavorite = recipeLink => {
+		FavoritesApiService.getCurrentFavorite(recipeLink)
+			.then(res => this.setState({ isUserFavorite: true }))
+			.catch(err => {
+				console.log(err);
+				this.setState({ isUserFavorite: false });
+			});
+	};
+
+	getCurrentRecipe = recipeLink => {
 		const recipe = this.context.recipes.filter(
 			recipe => recipe.id === recipeLink
 		)[0];
@@ -81,13 +97,33 @@ export default class RecipePage extends Component {
 		}
 	};
 
-	renderAddtoFavoritesBtn = isAuthorized => {
-		if (isAuthorized)
+	renderAddtoFavoritesBtn = (isAuthorized, isUserFavorite) => {
+		if (isAuthorized && !isUserFavorite)
 			return (
 				<div className="favorite-btn">
-					<button>Add to Favorite</button>
+					<button onClick={this.handleAddToFavoritesClick}>
+						Add to Favorite
+					</button>
 				</div>
 			);
+
+		if (isAuthorized && isUserFavorite)
+			return (
+				<div className="favorite-btn">
+					<button>Remove From Favorite</button>
+				</div>
+			);
+	};
+
+	handleAddToFavoritesClick = () => {
+		const { recipe } = this.state;
+		if (!this.state.isUserFavorite) {
+			FavoritesApiService.postFavorite(recipe)
+				.then(res => {
+					if (res.ok) this.setState({ isUserFavorite: true });
+				})
+				.catch(err => console.log(err));
+		}
 	};
 
 	render() {
@@ -102,10 +138,14 @@ export default class RecipePage extends Component {
 			source,
 			source_url
 		} = this.state.recipe;
+
 		return (
 			<div className="recipe-container">
 				<h2>{name}</h2>
-				{this.renderAddtoFavoritesBtn(this.context.isAuthorized)}
+				{this.renderAddtoFavoritesBtn(
+					this.context.isAuthorized,
+					this.state.isUserFavorite
+				)}
 				<div className="image-container">
 					<img src={image} alt={name} />
 				</div>
