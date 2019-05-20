@@ -14,7 +14,6 @@ export default class HomePage extends Component {
 							Search for meals <br />
 							using AI
 						</h2>
-
 						<p>
 							Submit an image that contains food and the Clarifai API will use
 							artificial intelligence to determine possible matching
