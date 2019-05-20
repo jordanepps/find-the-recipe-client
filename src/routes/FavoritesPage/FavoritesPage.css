@@ -1,0 +1,23 @@
+.favorites-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.favorites-container h2 {
+    font-family: 'Rancho', cursive;
+    font-weight: normal;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+@media (min-width: 768px) {
+    .favorites-container {
+        padding: 20px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .favorites-container h2 {
+        font-size: 40px;
+    }
+}

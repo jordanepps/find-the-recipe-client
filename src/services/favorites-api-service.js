@@ -44,6 +44,18 @@ const FavoritesApiService = {
 			if (!res.ok) throw Error(res);
 			return res;
 		});
+	},
+	getUserFavorites() {
+		return fetch(`${config.API_ENDPOINT}/favorites`, {
+			method: 'GET',
+			headers: {
+				authorization: `bearer ${TokenService.getAuthToken()}`,
+				'content-type': 'application/json'
+			}
+		}).then(res => {
+			if (!res.ok) throw Error(res);
+			return res;
+		});
 	}
 };
 

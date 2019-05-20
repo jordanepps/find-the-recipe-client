@@ -4,8 +4,11 @@ import './RecipeCard.css';
 
 export default class RecipeCard extends Component {
 	render() {
-		const { name, image, id } = this.props;
-		const toLink = id.split('_').pop();
+		const { name, image, id, recipe_code } = this.props;
+		// const toLink = id.split('_').pop();
+		const toLink = recipe_code
+			? recipe_code.split('_').pop()
+			: id.split('_').pop();
 		return (
 			<div className="recipe-card">
 				<Link to={`/recipe/${toLink}`}>
