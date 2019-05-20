@@ -11,14 +11,16 @@ export default class HomePage extends Component {
 				<div>
 					<div className="headline-container">
 						<h2 className="heading">
-							Search for meals <br />using AI
+							Search for meals <br />
+							using AI
 						</h2>
+
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus
-							in massa tempor nec feugiat nisl pretium fusce id. Sed enim ut sem
-							viverra aliquet eget sit. Aliquam sem fringilla ut morbi tincidunt
-							augue. Interdum velit laoreet id donec ultrices tincidunt.
+							Submit an image that contains food and the Clarifai API will use
+							artificial intelligence to determine possible matching
+							ingredients. The ingredients are then sent to the Edamam API and
+							recipes with ingredients most likely matching the image will be
+							displayed in order.
 						</p>
 					</div>
 				</div>

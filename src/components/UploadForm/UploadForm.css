@@ -95,6 +95,10 @@ form button {
     opacity: 1;
 }
 
+.image-error {
+    color: red;
+}
+
 @media (min-width: 768px) {
     form {
         grid-column-start: 1;

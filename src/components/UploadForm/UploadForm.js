@@ -34,6 +34,11 @@ export default class UploadForm extends Component {
 						required
 						onChange={e => this.context.setImageLink(e.target.value)}
 					/>
+					<p className="image-error">
+						{this.context.error
+							? 'Please provide another image and try again'
+							: ''}
+					</p>
 				</div>
 				<div className="submit-container">
 					<button type="submit">Search for recipes</button>
