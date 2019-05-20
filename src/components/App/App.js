@@ -15,6 +15,9 @@ import './App.css';
 
 export default class App extends Component {
 	render() {
+		this.componentDidMount = () => {
+			console.log('mount');
+		};
 		return (
 			<div className="App">
 				<IngredientsProvider>

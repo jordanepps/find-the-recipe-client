@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import IngredientsContext from '../../contexts/IngredientsContext';
 import RecipeApiService from '../../services/recipe-api-service';
+import TokenService from '../../services/token-service';
 import FavoritesApiService from '../../services/favorites-api-service';
 import './RecipePage.css';
 
@@ -14,6 +15,7 @@ export default class RecipePage extends Component {
 	};
 
 	componentDidMount = () => {
+		this.context.toggleAuthorized(TokenService.hasAuthToken());
 		const { recipeId } = this.props.match.params;
 		const { recipeEndpoint } = this.state;
 		const recipeLink = `${recipeEndpoint}${recipeId}`;
@@ -23,9 +25,10 @@ export default class RecipePage extends Component {
 
 	checkCurrentFavorite = recipeLink => {
 		FavoritesApiService.getCurrentFavorite(recipeLink)
-			.then(res => this.setState({ isUserFavorite: true }))
+			.then(res => {
+				this.setState({ isUserFavorite: true });
+			})
 			.catch(err => {
-				console.log(err);
 				this.setState({ isUserFavorite: false });
 			});
 	};
@@ -110,9 +113,24 @@ export default class RecipePage extends Component {
 		if (isAuthorized && isUserFavorite)
 			return (
 				<div className="favorite-btn">
-					<button>Remove From Favorite</button>
+					<button onClick={this.handleRemoveFromFavoritesClick}>
+						Remove From Favorite
+					</button>
 				</div>
 			);
+	};
+
+	handleRemoveFromFavoritesClick = () => {
+		const { recipe } = this.state;
+		if (this.state.isUserFavorite) {
+			FavoritesApiService.removeFavorite(recipe)
+				.then(res => {
+					this.setState({ isUserFavorite: false });
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		}
 	};
 
 	handleAddToFavoritesClick = () => {
@@ -120,6 +138,7 @@ export default class RecipePage extends Component {
 		if (!this.state.isUserFavorite) {
 			FavoritesApiService.postFavorite(recipe)
 				.then(res => {
+					console.log(res);
 					if (res.ok) this.setState({ isUserFavorite: true });
 				})
 				.catch(err => console.log(err));

@@ -26,8 +26,8 @@ export class IngredientsProvider extends Component {
 		isAuthorized: false
 	};
 
-	toggleAuthorized = () => {
-		this.setState({ isAuthorized: !this.state.isAuthorized });
+	toggleAuthorized = isAuthorized => {
+		this.setState({ isAuthorized });
 	};
 
 	setImageLink = imageLink => {

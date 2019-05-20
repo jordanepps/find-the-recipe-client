@@ -15,6 +15,19 @@ const FavoritesApiService = {
 			return res;
 		});
 	},
+	removeFavorite(recipe) {
+		return fetch(`${config.API_ENDPOINT}/favorites`, {
+			method: 'DELETE',
+			headers: {
+				authorization: `bearer ${TokenService.getAuthToken()}`,
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify({ recipe })
+		}).then(res => {
+			if (!res.ok) throw Error(res);
+			return res;
+		});
+	},
 	getCurrentFavorite(recipe_code) {
 		return fetch(
 			`${config.API_ENDPOINT}/favorites?recipe_code=${encodeURIComponent(
@@ -26,7 +39,6 @@ const FavoritesApiService = {
 					authorization: `bearer ${TokenService.getAuthToken()}`,
 					'content-type': 'application/json'
 				}
-				// body: JSON.stringify({ recipe_code })
 			}
 		).then(res => {
 			if (!res.ok) throw Error(res);
