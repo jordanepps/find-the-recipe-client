@@ -20,7 +20,7 @@ export default class RecipePage extends Component {
 		const { recipeEndpoint } = this.state;
 		const recipeLink = `${recipeEndpoint}${recipeId}`;
 		this.getCurrentRecipe(recipeLink);
-		this.checkCurrentFavorite(recipeLink);
+		if (TokenService.hasAuthToken()) this.checkCurrentFavorite(recipeLink);
 	};
 
 	checkCurrentFavorite = recipeLink => {
@@ -138,7 +138,6 @@ export default class RecipePage extends Component {
 		if (!this.state.isUserFavorite) {
 			FavoritesApiService.postFavorite(recipe)
 				.then(res => {
-					console.log(res);
 					if (res.ok) this.setState({ isUserFavorite: true });
 				})
 				.catch(err => console.log(err));
