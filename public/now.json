@@ -1,7 +1,7 @@
 {
     "version": 2,
     "alias": "jordans-recipe-app",
-    "name": "bookmarks-app",
+    "name": "find-the-recipe",
     "routes": [{
             "src": "^/static/(.*)",
             "dest": "/static/$1"
