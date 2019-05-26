@@ -36,7 +36,7 @@ export default class UploadForm extends Component {
 				<div className="form-container">
 					<label htmlFor="image_link">Paste Image Link</label>
 					<span className="example-container">
-						or{' '}
+						or
 						<button className="example" onClick={this.handleExampleImage}>
 							use example image
 						</button>

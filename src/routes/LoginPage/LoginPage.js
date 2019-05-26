@@ -35,6 +35,12 @@ export default class LoginPage extends Component {
 			});
 	};
 
+	handleDemoCred = e => {
+		e.preventDefault();
+		document.getElementById('user_name').value = 'testuser';
+		document.getElementById('password').value = 'Password1!';
+	};
+
 	render() {
 		let registrationSuccess = this.props.location.search
 			? 'Registration Successful!'
@@ -43,10 +49,16 @@ export default class LoginPage extends Component {
 		return (
 			<section className="login-container">
 				<h2>Login</h2>
+				<span className="example-container">
+					or
+					<button className="example" onClick={this.handleDemoCred}>
+						use demo credentials
+					</button>
+				</span>
 				<h3 className={this.state.error ? 'error' : 'success'}>
 					{this.state.error || registrationSuccess}
 				</h3>
-				{/* <h3 className="error">{this.state.error}</h3> */}
+
 				<form onSubmit={this.handleFormSubmit}>
 					<div>
 						<label htmlFor="user_name">Username:</label>
