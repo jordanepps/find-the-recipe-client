@@ -15,12 +15,14 @@ export default class RecipePage extends Component {
 	};
 
 	componentDidMount = () => {
-		this.context.toggleAuthorized(TokenService.hasAuthToken());
-		const { recipeId } = this.props.match.params;
-		const { recipeEndpoint } = this.state;
-		const recipeLink = `${recipeEndpoint}${recipeId}`;
-		this.getCurrentRecipe(recipeLink);
-		if (TokenService.hasAuthToken()) this.checkCurrentFavorite(recipeLink);
+		if (this.context.toggleAuthorized) {
+			this.context.toggleAuthorized(TokenService.hasAuthToken());
+			const { recipeId } = this.props.match.params;
+			const { recipeEndpoint } = this.state;
+			const recipeLink = `${recipeEndpoint}${recipeId}`;
+			this.getCurrentRecipe(recipeLink);
+			if (TokenService.hasAuthToken()) this.checkCurrentFavorite(recipeLink);
+		}
 	};
 
 	checkCurrentFavorite = recipeLink => {

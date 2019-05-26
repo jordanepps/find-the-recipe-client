@@ -42,9 +42,11 @@ export default class LoginPage extends Component {
 	};
 
 	render() {
-		let registrationSuccess = this.props.location.search
-			? 'Registration Successful!'
-			: '';
+		let registrationSuccess;
+		if (this.props.location)
+			registrationSuccess = this.props.location.search
+				? 'Registration Successful!'
+				: '';
 
 		return (
 			<section className="login-container">

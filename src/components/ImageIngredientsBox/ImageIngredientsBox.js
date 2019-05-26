@@ -10,7 +10,7 @@ export default class ImageIngredientsBox extends Component {
 			this.context.ingredients.length === 0 &&
 			this.context.imageLink === ''
 		) {
-			this.props.history.push('/');
+			if (this.props.history) this.props.history.push('/');
 		}
 	}
 
