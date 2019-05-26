@@ -19,7 +19,8 @@ export default class HomePage extends Component {
 							artificial intelligence to determine possible matching
 							ingredients. The ingredients are then sent to the Edamam API and
 							recipes with ingredients most likely matching the image will be
-							displayed in order.
+							displayed in order. Register and log in to save your favorite
+							recipes you find.
 						</p>
 					</div>
 				</div>

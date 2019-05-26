@@ -99,6 +99,18 @@ form button {
     color: red;
 }
 
+.example-container {
+    font-size: 18px;
+}
+
+.example {
+    display: inline;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
 @media (min-width: 768px) {
     form {
         grid-column-start: 1;

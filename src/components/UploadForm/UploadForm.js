@@ -22,11 +22,25 @@ export default class UploadForm extends Component {
 			});
 	};
 
+	handleExampleImage = e => {
+		e.preventDefault();
+		const demoImage =
+			'https://clarifai.com/cms-assets/20180320212159/food-003.jpg';
+		this.context.setImageLink(demoImage);
+		document.getElementById('image_link').value = demoImage;
+	};
+
 	render() {
 		return (
 			<form onSubmit={this.handleImageSumbit}>
 				<div className="form-container">
 					<label htmlFor="image_link">Paste Image Link</label>
+					<span className="example-container">
+						or{' '}
+						<button className="example" onClick={this.handleExampleImage}>
+							use example image
+						</button>
+					</span>
 					<input
 						type="text"
 						name="image_link"
